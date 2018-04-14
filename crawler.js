@@ -15,9 +15,6 @@ var grabAnchors = function () {
               // policy url
               return (anchors[i].href);
           }
-          if (anchors[i].href.includes("about")) {
-            console.log(anchors[i].href);
-          }
       }
       console.log("Privacy policy not found.");
       return false;
