@@ -20,8 +20,10 @@ function testFunc(){
   console.log(document.querySelector('body'));
 }
 
+
+console.log("this script was loaded");
+
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    console.log("yo");
     testFunc();
-    sendResponse(testFunc());
+    sendResponse(1);
 });
