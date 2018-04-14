@@ -2,7 +2,13 @@
   "name": "PlainPrivacy",
   "version": "1.0",
   "description": "A Chrome extension to help parse privacy policies.",
-  "permissions": ["activeTab", "declarativeContent", "storage", "tabs"],
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "storage",
+    "tabs",
+    "https://plainprivacy.herokuapp.com/*"
+  ],
   "background": {
       "scripts": ["scripts/background.js"],
       "persistent": false

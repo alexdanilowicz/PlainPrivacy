@@ -5,6 +5,7 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
       if ( response ){
         chrome.pageAction.show(tabId);
       }
+      console.log(document.getElementById("changeColor"))
       console.log("finished running");
     });
   }
