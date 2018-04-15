@@ -12,11 +12,12 @@ img
 }
 
 .title {
-  font-size: 20px;
+  font-size: 22px;
   text-align: center;
   width: 290px;
-  background-color: #7fcbeb;
+  background-color: #6666cc;
   padding: 5px;
+  color: white;
 }
 
 .container {
@@ -25,15 +26,25 @@ img
   flex-direction: column;
 }
 
+.content-container {
+  margin-top: 10px;
+  padding: 8px;
+}
+
 .nav {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
+  margin-top: 10px;
+  font-size: 15px;
 }
 
 footer {
   margin-top: 30px;
   top: 80%;
+  background-color: #6666cc;
+  padding: 3px;
+  color: white;
 }
 
 #may {
@@ -44,10 +55,26 @@ footer {
   display: none;
 }
 
-#why {
-  padding: 5px;
+#why-butt {
+  padding: 10px;
+  border: 1px solid #6666cc;
+  border-radius: 4px;
 }
 
-#what {
-  padding: 5px;
+#why-butt:hover {
+  color: white;
+  background-color: #6666cc;
+  transition: all 0.2s ease-in-out;
+}
+
+#what-butt {
+  padding: 10px;
+  border: 1px solid #6666cc;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+#what-butt:hover {
+  color: white;
+  background-color: #6666cc;
 }
