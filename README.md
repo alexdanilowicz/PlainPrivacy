@@ -9,7 +9,7 @@ Plain Privacy is a Google Chrome Extension built for Hack Dartmouth IV. When you
 > "Most Americans have no idea what they are signing up for because... terms of service are beyond comprehension."
 \- Senator Lindsey Graham in the *New York Times*, April 11, 2018.
 
- As concerns over data privacy has been become catapulted into the limelight, lawmakers and every day people have become aware of the need to understand Internet privacy policies. However, privacy policies and terms of service with jargon are becoming increasingly complex.
+ As concerns over data privacy have been become catapulted into the limelight, lawmakers and every day people have become aware of the need to understand Internet privacy policies. However, privacy policies and terms of service with jargon are becoming increasingly complex.
 
  According to an [article in the  Atlantic](https://www.theatlantic.com/technology/archive/2012/03/reading-the-privacy-policies-you-encounter-in-a-year-would-take-76-work-days/253851/), "every Internet user, were they to read every privacy policy on every website they visit would spend 25 days out of the year just reading privacy policies."
 
