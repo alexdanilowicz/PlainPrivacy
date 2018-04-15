@@ -1,0 +1,49 @@
+body{
+   width:350px;
+   height:350px;
+   }
+
+button {
+  height: 250px;
+  width: 250px;
+  outline: none;
+}
+img {
+  height: 350px;
+  width: 350px;
+}
+
+#hide {
+  display: none;
+}
+
+/* NAVIGATION CLASSES */
+.topnav-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.topnav-list li {
+  float: right;
+  margin: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  color: #E1E6E1;
+  transition:all 0.5s ease;
+}
+
+.topnav-list li:hover {
+  color: #846B8A;
+  cursor: default;
+}
+
+.topnav-list li a {
+  text-decoration: none;
+  color: #5D576B;
+  transition:all 0.5s ease;
+}
+
+.topnav-list li a:hover {
+  color: #FAE3E3;
+}

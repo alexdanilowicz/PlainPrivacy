@@ -2,6 +2,8 @@
 function loadPopup(domain){
   chrome.storage.sync.get([domain], function(data){
     console.log(data[domain]);
+    // data is now loaded so hide loading gif
+    document.getElementById("loading-gif").id = "hide";
   });
 }
 
