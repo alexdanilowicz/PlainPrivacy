@@ -21,9 +21,7 @@ function getAnalysisResults(url, domain){
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
       let resp = xhr.responseText;
-      chrome.storage.sync.set({
-        domain: resp
-      });
+      chrome.storage.sync.set({domain, resp});
     }
   }
 
