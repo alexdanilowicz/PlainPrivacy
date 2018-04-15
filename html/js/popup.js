@@ -10,6 +10,9 @@ function loadPopup(domain){
     }
     chrome.storage.sync.get([domain], function(data){
       console.log(data[domain]);
+      if ( typeof data[domain] == undefined ){
+        return;
+      }
       let allInfo = JSON.parse(data[domain]);
       results = allInfo.results;
 
