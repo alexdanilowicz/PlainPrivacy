@@ -3,25 +3,39 @@ function checkForPrivacyPolicy(){
 
   for (var i = 0; i < anchors.length; i++) {
       if (anchors[i].href.includes("privacy")) {
-          // Code to call server will be here
-          getAnalysisResults();
-          console.log(anchors[i].href)
+          // Cacheing will be done here
+          let domain = getIdentifyingDomainName(anchors[i].href);
+          let results = getAnalysisResults(anchors[i].href, domain);
+
           return true;
       }
   }
   return false;
 }
 
-function getAnalysisResults(){
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://plainprivacy.herokuapp.com/testroute", true);
+function getAnalysisResults(url, domain){
+  let xhr = new XMLHttpRequest();
+  // console.log(`https://plainprivacy.herokuapp.com/parse?url=${url}`);
+  xhr.open("GET", `https://plainprivacy.herokuapp.com/parse?url=${url}`, true);
+
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
-      var resp = xhr.responseText;
-      console.log(resp);
+      let resp = xhr.responseText;
+      chrome.storage.sync.set({
+        domain: resp
+      });
     }
   }
+
   xhr.send();
+}
+
+function getIdentifyingDomainName(url){
+  url = url.replace("www.","");
+  let strippedHTTPS = url.split('//')[1];
+  let domain = strippedHTTPS.split('.')[0];
+  console.log(domain);
+  return domain;
 }
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
