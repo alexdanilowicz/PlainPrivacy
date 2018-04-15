@@ -21,6 +21,14 @@ img
 
 .container {
   display: none;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
 }
 
 footer {
@@ -30,4 +38,16 @@ footer {
 
 #may {
   margin: 5px;
+}
+
+#unable {
+  display: none;
+}
+
+#why {
+  padding: 5px;
+}
+
+#what {
+  padding: 5px;
 }

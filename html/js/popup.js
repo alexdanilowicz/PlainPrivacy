@@ -1,16 +1,37 @@
 
 function loadPopup(domain){
-  console.log("i get called tho");
   chrome.storage.sync.get([domain], function(data){
-    let results = JSON.parse(data[domain]);
+    let allInfo = JSON.parse(data[domain]);
+    results = allInfo.results;
+    // console.log(results.length);
+    // if ( !results.length ){
+    //   document.getElementById("loader-gif").style.display = "none";
+    //   document.getElementById("unable").style.display = "block";
+    //   document.getElementsByTagName("body")[0].style.height = "auto";
+    //   return;
+    // }
+    document.getElementById("why").innerHTML = allInfo.summary;
+    document.getElementById("why").style.display = "none";
     // data is now loaded so hide loading gif
     document.getElementById("loader-gif").style.display = "none";
-    document.getElementById("container").style.display = "block";
+    document.getElementById("container").style.display = "flex";
+    document.getElementById("container").style.flexDirection = "column";
+    document.getElementById("what-butt").onclick = function(){
+      document.getElementById("why").style.display = "none";
+      document.getElementById("what").style.display = "block";
+    }
+
+    document.getElementById("why-butt").onclick = function(){
+      document.getElementById("what").style.display = "none";
+      document.getElementById("why").style.display = "block";
+    }
 
     document.getElementsByTagName("body")[0].style.height = "auto";
     document.getElementById("may").innerHTML = title(domain) + " may";
 
-    let allList = document.getElementById("all-list")
+    let allList = document.getElementById("all-list");
+
+
     for ( let key in results ){
       let newListItem = document.createElement("li");
 
