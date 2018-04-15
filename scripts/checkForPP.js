@@ -15,13 +15,16 @@ function checkForPrivacyPolicy(){
 
 function getAnalysisResults(url, domain){
   let xhr = new XMLHttpRequest();
-  // console.log(`https://plainprivacy.herokuapp.com/parse?url=${url}`);
-  xhr.open("GET", `https://plainprivacy.herokuapp.com/parse?url=${url}`, true);
+  xhr.open("GET", `https://plainprivacy.herokuapp.com/analyzeUrl?url=${url}`, true);
 
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
       let resp = xhr.responseText;
-      chrome.storage.sync.set({domain, resp});
+      console.log(resp);
+      let obj = {};
+      obj[domain] = resp;
+      chrome.storage.sync.set(obj);
+      chrome.runtime.sendMessage({data:"received"});
     }
   }
 
@@ -37,7 +40,9 @@ function getIdentifyingDomainName(url){
 }
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if ( request.args.tabId ){
     let tabId = request.args.tabId;
     let pp = checkForPrivacyPolicy();
     sendResponse(pp);
+  }
 });
