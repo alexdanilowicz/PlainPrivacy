@@ -64,7 +64,7 @@ function loadPopup(domain){
 
           let text = keywords.join(", ");
 
-          newListItem.innerHTML = lastWord ? `${keyTitle} ${text} and ${lastWord}` : `${keyTitle}s ${keywords[0]}`;
+          newListItem.innerHTML = lastWord ? `<strong> ${keyTitle} </strong> ${text} and ${lastWord}` : `<strong> ${keyTitle} </strong> ${keywords[0]}`;
 
           allList.appendChild(newListItem);
         }
