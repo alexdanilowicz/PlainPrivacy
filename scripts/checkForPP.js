@@ -1,17 +1,45 @@
-function checkForPrivacyPolicy(){
+function checkForPrivacyPolicy(callback){
   var anchors = document.getElementsByTagName('a');
-
+  let openConnections = 0;
+  let closedConnections = 0;
   for (var i = 0; i < anchors.length; i++) {
       if (anchors[i].href.includes("privacy")) {
           // Cacheing will be done here
           let domain = getIdentifyingDomainName(anchors[i].href);
           console.log(anchors[i].href);
-          let results = getAnalysisResults(anchors[i].href, domain);
+          let xhr = getAnalysisResults(anchors[i].href, domain);
+          openConnections += 1;
 
-          return true;
+
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+              let resp = xhr.responseText;
+              // console.log("resp");
+              // console.log(resp);
+              let obj = {};
+              obj[domain] = resp;
+
+              console.log(resp);
+              if ( resp.length > 100 ){
+                chrome.storage.sync.set(obj);
+                console.log("saved in: " + domain);
+                chrome.storage.sync.set({"status": 1});
+                chrome.runtime.sendMessage({data:"received"});
+
+                callback(true);
+                return;
+              }
+              closedConnections += 1;
+              if (closedConnections == anchors.length - 1){
+                console.log("CLOSED CONNECTIONS");
+                return callback(false);
+              }
+
+            }
+          }
       }
+
   }
-  return false;
 }
 
 function getAnalysisResults(url, domain){
@@ -19,22 +47,11 @@ function getAnalysisResults(url, domain){
   console.log("request: " + `https://plainprivacy.herokuapp.com/analyzeUrl?url=${url}`);
   xhr.open("GET", `https://plainprivacy.herokuapp.com/analyzeUrl?url=${url}`, true);
 
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4) {
-      let resp = xhr.responseText;
-      console.log("resp");
-      console.log(resp);
-      let obj = {};
-      obj[domain] = resp;
-      chrome.storage.sync.set(obj);
-      console.log("saved in: " + domain);
-      chrome.storage.sync.set({"status": 1});
-      chrome.runtime.sendMessage({data:"received"});
-    }
-  }
 
   chrome.storage.sync.set({"status": 0});
   xhr.send();
+
+  return xhr;
 }
 
 function getIdentifyingDomainName(url){
@@ -47,7 +64,9 @@ function getIdentifyingDomainName(url){
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if ( request.args.tabId ){
     let tabId = request.args.tabId;
-    let pp = checkForPrivacyPolicy();
-    sendResponse(pp);
+    let pp = checkForPrivacyPolicy(sendResponse);
   }
+
+  return true;
+
 });

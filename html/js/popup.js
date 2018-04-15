@@ -10,13 +10,16 @@ function loadPopup(domain){
     }
     chrome.storage.sync.get([domain], function(data){
       console.log(data[domain]);
-      if ( typeof data[domain] == undefined ){
-        return;
+      let allInfo;
+      if ( typeof data[domain] == "undefined" || data[domain] == "undefined"){
+        allInfo = null;
       }
-      let allInfo = JSON.parse(data[domain]);
-      results = allInfo.results;
+      else {
+        allInfo = JSON.parse(data[domain]);
+        results = allInfo.results;
+        document.getElementById("why").innerHTML = allInfo.summary;
+      }
 
-      document.getElementById("why").innerHTML = allInfo.summary;
       document.getElementById("why").style.display = "none";
       document.getElementById("loader-gif").style.display = "none";
       document.getElementById("container").style.display = "flex";
@@ -24,6 +27,12 @@ function loadPopup(domain){
       document.getElementById("nav").style.display = "flex";
       document.getElementById("nav").style.flexDirection = "row";
       document.getElementById("nav").style.justifyContent = "space-around";
+
+      if ( typeof data[domain] == "undefined" || data[domain] == "undefined" ){
+        document.getElementById("may").innerHTML = "We are unable to run our analysis on this website";
+        return;
+      }
+
       document.getElementById("what-butt").style.color = "white";
       document.getElementById("what-butt").style.backgroundColor = "#6666cc";
       document.getElementById("what-butt").onclick = function(){

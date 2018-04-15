@@ -10,8 +10,7 @@
     "https://plainprivacy.herokuapp.com/*"
   ],
   "background": {
-      "scripts": ["scripts/background.js"],
-      "persistent": false
+      "scripts": ["scripts/background.js"]
   },
   "content_scripts": [
     {
