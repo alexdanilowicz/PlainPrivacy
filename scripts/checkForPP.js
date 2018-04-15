@@ -20,14 +20,15 @@ function getAnalysisResults(url, domain){
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
       let resp = xhr.responseText;
-      console.log("saved to: " + domain);
       let obj = {};
       obj[domain] = resp;
       chrome.storage.sync.set(obj);
+      chrome.storage.sync.set({"status": 1});
       chrome.runtime.sendMessage({data:"received"});
     }
   }
 
+  chrome.storage.sync.set({"status": 0});
   xhr.send();
 }
 
@@ -35,7 +36,6 @@ function getIdentifyingDomainName(url){
   url = url.replace("www.","");
   let strippedHTTPS = url.split('//')[1];
   let domain = strippedHTTPS.split('.')[0];
-  console.log(domain);
   return domain;
 }
 

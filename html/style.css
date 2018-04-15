@@ -20,19 +20,14 @@ img
   color: white;
 }
 
-.container {
-  display: none;
-  justify-content: center;
-  flex-direction: column;
-}
 
 .content-container {
   margin-top: 10px;
   padding: 8px;
 }
 
-.nav {
-  display: flex;
+#nav {
+  display: none;
   justify-content: space-around;
   flex-direction: row;
   margin-top: 10px;
@@ -77,4 +72,9 @@ footer {
 #what-butt:hover {
   color: white;
   background-color: #6666cc;
+}
+.container {
+  display: none;
+  justify-content: center;
+  flex-direction: column;
 }
