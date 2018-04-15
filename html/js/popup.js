@@ -1,5 +1,8 @@
 
 function loadPopup(domain){
+  if ( domain == "stackoverflow" ){
+    domain = "stackexchange";
+  }
   chrome.storage.sync.get([domain], function(data){
     let allInfo = JSON.parse(data[domain]);
     results = allInfo.results;

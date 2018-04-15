@@ -20,7 +20,7 @@ function getAnalysisResults(url, domain){
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
       let resp = xhr.responseText;
-      console.log(resp);
+      console.log("saved to: " + domain);
       let obj = {};
       obj[domain] = resp;
       chrome.storage.sync.set(obj);
