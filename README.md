@@ -2,8 +2,12 @@
 
 Collaborators: Chris Bertasi, Alexander Danilowicz, Dylan Hong, and Teddy Ni.
 
+**Winner of the One of Best Uses of a Google API at Hack Dartmouth IV**
+
 ### What is It?
-Plain Privacy is a Google Chrome Extension built for Hack Dartmouth IV. When you visit a website, the extension crawls the page for its privacy policy. If a policy is found, the extension lights up, parses the privacy policy using Natural Language Processing, and then displays concise, relevant information to the user.
+PlainPrivacy automatically summarizes and highlights keywords in the privacy policies of the websites you visit built for Hack Dartmouth IV. When you visit a website, the extension crawls the page for its privacy policy. If a policy is found, the extension lights up, parses the privacy policy using Natural Language Processing, and then displays what the website collects and why it collects that information.
+
+We built the server and wrote the NLP in Python. You can see sever repository here: [Plain Privacy Server](https://github.com/alexdanilowicz/PlainPrivacyServer).
 
 ### The Motivation Behind Plain Privacy:
 > "Most Americans have no idea what they are signing up for because... terms of service are beyond comprehension."
@@ -17,9 +21,9 @@ Plain Privacy is a Google Chrome Extension built for Hack Dartmouth IV. When you
 
 ### How We Built It:
 
-We used javascript, python, and the [Google Cloud Natural Language API](https://cloud.google.com/natural-language/).
+We used javascript and python, and a little bit of HTML and CSS.
 
-The core parts of the Chrome Extension are built in Javascript. Python is used for the server and NLP.
+The core parts of the Chrome Extension are naturally built off of Google Chrome Extension features and Javascript. Python is used for the server and natural language processing.
 
 ### The Future and Scaling:
 
