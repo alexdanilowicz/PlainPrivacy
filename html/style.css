@@ -11,6 +11,23 @@ img
   height: 300px;
 }
 
+#warning {
+  display: none;
+  margin-top: 5px;
+  text-align: center;
+  color: red;
+  font-style: bold;
+  font-size: 20px;
+}
+
+#warningsubtitle {
+  margin-top: 5px;
+  text-align: center;
+  color: red;
+  font-style: bold;
+  font-size: 14px;
+}
+
 .title {
   font-size: 22px;
   text-align: center;
@@ -22,7 +39,6 @@ img
 
 
 .content-container {
-  margin-top: 10px;
   padding: 8px;
 }
 
@@ -46,6 +62,12 @@ footer {
   margin: 5px;
 }
 
+#whysentence {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
 #unable {
   display: none;
 }
@@ -59,14 +81,14 @@ footer {
 #why-butt:hover {
   color: white;
   background-color: #6666cc;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 #what-butt {
   padding: 10px;
   border: 1px solid #6666cc;
   border-radius: 4px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 #what-butt:hover {

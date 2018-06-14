@@ -10,7 +10,6 @@ function checkForPrivacyPolicy(callback){
           let xhr = getAnalysisResults(anchors[i].href, domain);
           openConnections += 1;
 
-
           xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
               let resp = xhr.responseText;
@@ -46,8 +45,6 @@ function getAnalysisResults(url, domain){
   let xhr = new XMLHttpRequest();
   console.log("request: " + `https://plainprivacy.herokuapp.com/analyzeUrl?url=${url}`);
   xhr.open("GET", `https://plainprivacy.herokuapp.com/analyzeUrl?url=${url}`, true);
-
-
   chrome.storage.sync.set({"status": 0});
   xhr.send();
 
